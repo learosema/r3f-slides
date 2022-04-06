@@ -1,4 +1,4 @@
-module.exports = function (eleventyConfig) {
+export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy('src/img/*.png');
   eleventyConfig.addPassthroughCopy('src/css/*.css');
 
@@ -8,4 +8,4 @@ module.exports = function (eleventyConfig) {
       output: 'dist',
     },
   };
-};
+}

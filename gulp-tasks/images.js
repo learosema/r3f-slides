@@ -1,23 +1,25 @@
-import { dest, src } from 'gulp';
-import imagemin from 'gulp-imagemin';
+import gulp from 'gulp';
+import imagemin, { mozjpeg, optipng } from 'gulp-imagemin';
 // Grabs all images, runs them through imagemin
 // and plops them in the dist folder
-const images = async () => {
+
+const images = () => {
   // We have specific configs for jpeg and png files to try
   // to really pull down asset sizes
-  return src('./src/images/**/*')
+  return gulp
+    .src('./src/images/**/*')
     .pipe(
       imagemin(
         [
-          imagemin.mozjpeg({ quality: 60, progressive: true }),
-          imagemin.optipng({ optimizationLevel: 5, interlaced: null }),
+          mozjpeg({ quality: 75, progressive: true }),
+          optipng({ optimizationLevel: 5, interlaced: null }),
         ],
         {
           silent: true,
         }
       )
     )
-    .pipe(dest('./dist/images'));
+    .pipe(gulp.dest('./dist/images'));
 };
 
-module.exports = images;
+export default images;
