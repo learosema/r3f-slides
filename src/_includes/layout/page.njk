@@ -1,0 +1,9 @@
+{% if not title %}
+  {% set title = "Untitled" %}
+{% endif %}
+
+{% block content %}
+  <article class="page-content | flow">
+    {{ content | safe }}
+  </article>
+{% endblock %}
